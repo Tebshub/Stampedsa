@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stamped. — Teacher Stamps with Style</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C8102E;--red-light:#e8334a;--dark:#1a1a1a;--mid:#555;--light:#f7f4f1;--cream:#fdf9f6;--border:#e0dbd5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--dark);}
+nav{position:sticky;top:0;z-index:100;background:rgba(253,249,246,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Dancing Script',cursive;font-size:1.9rem;color:var(--dark);text-decoration:none;}
+.nav-logo span{color:var(--red);}
+.nav-logo .heart{color:var(--red);}
+.nav-links{display:flex;gap:1.8rem;align-items:center;}
+.nav-links a{text-decoration:none;color:var(--mid);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;transition:color .2s;cursor:pointer;}
+.nav-links a:hover{color:var(--red);}
+.cart-btn{background:var(--dark);color:white;border:none;cursor:pointer;padding:9px 18px;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:8px;transition:background .2s;}
+.cart-btn:hover{background:var(--red);}
+.cart-badge{background:var(--red);color:white;border-radius:50%;width:18px;height:18px;font-size:0.62rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
+.hero{max-width:1100px;margin:0 auto;padding:70px 2rem 50px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.hero-text h1{font-family:'Dancing Script',cursive;font-size:4.2rem;line-height:1.1;margin-bottom:.8rem;}
+.hero-text h1 em{color:var(--red);font-style:normal;}
+.hero-tagline{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--mid);line-height:1.65;margin-bottom:1.6rem;}
+.hero-stats{display:flex;gap:2rem;padding-top:1.4rem;border-top:1px solid var(--border);margin-bottom:1.8rem;}
+.stat .num{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--red);display:block;}
+.stat .lbl{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);font-weight:500;}
+.hero-btns{display:flex;gap:1rem;}
+.btn-red{background:var(--red);color:white;border:none;cursor:pointer;padding:13px 28px;font-family:'Montserrat',sans-serif;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-red:hover{background:var(--red-light);}
+.btn-outline{background:transparent;color:var(--dark);border:1.5px solid var(--dark);cursor:pointer;padding:13px 28px;font-family:'Montserrat',sans-serif;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;transition:all .2s;}
+.btn-outline:hover{border-color:var(--red);color:var(--red);}
+.hero-visual{display:flex;align-items:center;justify-content:center;}
+.stamp-cluster{position:relative;width:320px;height:320px;}
+.big-stamp{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:white;border:1px solid var(--border);padding:28px 32px;text-align:center;box-shadow:6px 6px 0 var(--red);animation:float 4s ease-in-out infinite;}
+.big-stamp-inner{border:3px solid var(--red);padding:16px 28px;position:relative;}
+.big-stamp-inner::before{content:'';position:absolute;inset:4px;border:1px solid rgba(200,16,46,.25);}
+.bst{font-family:'Dancing Script',cursive;font-size:1.7rem;color:var(--red);display:block;}
+.bss{font-size:0.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--red);font-weight:600;margin-top:2px;display:block;}
+@keyframes float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 8px))}}
+.mini-float{position:absolute;background:white;border:2px solid;padding:6px 10px;font-size:0.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:3px 3px 0 currentColor;}
+.mf1{color:#2563eb;border-color:#2563eb;top:20px;left:10px;animation:floatY 3.5s ease-in-out infinite;}
+.mf2{color:#d97706;border-color:#d97706;top:14px;right:10px;animation:floatY 4.2s ease-in-out infinite .6s;}
+.mf3{color:#16a34a;border-color:#16a34a;bottom:30px;left:0;animation:floatY 3.8s ease-in-out infinite 1s;}
+.mf4{color:#7c3aed;border-color:#7c3aed;bottom:20px;right:5px;animation:floatY 4.5s ease-in-out infinite .3s;}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.ticker{background:var(--red);padding:11px 0;overflow:hidden;}
+.ticker-inner{display:flex;gap:3rem;animation:ticker 22s linear infinite;width:max-content;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-inner span{color:white;font-size:0.68rem;letter-spacing:.15em;text-transform:uppercase;font-weight:500;white-space:nowrap;}
+.dot{color:rgba(255,255,255,.4);}
+.section{max-width:1100px;margin:0 auto;padding:70px 2rem;}
+.sec-head{border-bottom:1px solid var(--border);padding-bottom:.8rem;margin-bottom:2.5rem;display:flex;align-items:baseline;gap:1rem;}
+.sec-head h2{font-family:'Dancing Script',cursive;font-size:2.6rem;}
+.sec-head p{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--mid);font-size:1rem;}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+.tab{border:1.5px solid var(--border);background:white;cursor:pointer;padding:6px 18px;font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:var(--mid);transition:all .2s;}
+.tab:hover,.tab.active{background:var(--dark);color:white;border-color:var(--dark);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.8rem;}
+.card{background:white;border:1px solid var(--border);overflow:hidden;transition:all .3s;position:relative;}
+.card:hover{transform:translateY(-4px);box-shadow:5px 5px 0 var(--red);border-color:var(--red);}
+.card-preview{height:155px;background:var(--light);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border);padding:16px;position:relative;overflow:hidden;}
+.roller-stamp{background:white;border-radius:6px;padding:10px 18px;border:2px solid #222;box-shadow:2px 2px 0 #222;text-align:center;min-width:160px;}
+.roller-top{background:#1a1a1a;height:8px;border-radius:3px 3px 0 0;margin:-10px -18px 8px;}
+.roller-text{font-family:'Dancing Script',cursive;font-size:1.05rem;color:var(--red);line-height:1.3;}
+.mini-stamp-preview{display:inline-block;padding:7px 14px;border:2px solid;font-size:0.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;box-shadow:3px 3px 0 currentColor;line-height:1.3;text-align:center;}
+.set-preview{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;align-items:center;}
+.set-mini{width:38px;height:28px;border:2px solid;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:0.42rem;font-weight:700;text-transform:uppercase;line-height:1.1;text-align:center;padding:2px;}
+.tag{position:absolute;top:10px;left:10px;font-size:0.52rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:3px 8px;color:white;}
+.tag-new{background:var(--red);}
+.tag-pop{background:#1a1a1a;}
+.card-body{padding:1.1rem 1.2rem;}
+.card-name{font-weight:600;font-size:0.82rem;margin-bottom:3px;}
+.card-desc{font-size:0.7rem;color:#888;line-height:1.6;margin-bottom:.9rem;}
+.card-foot{display:flex;align-items:center;justify-content:space-between;}
+.price{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;}
+.price-note{font-size:0.68rem;color:#aaa;font-family:'Montserrat',sans-serif;}
+.add-btn{background:var(--dark);color:white;border:none;cursor:pointer;padding:8px 15px;font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;transition:background .2s;}
+.add-btn:hover{background:var(--red);}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.how-card{text-align:center;padding:2rem 1.5rem;border:1px solid var(--border);background:white;}
+.how-num{font-family:'Dancing Script',cursive;font-size:3rem;color:var(--red);line-height:1;margin-bottom:.5rem;}
+.how-card h4{font-size:0.82rem;font-weight:600;margin-bottom:.5rem;}
+.how-card p{font-size:0.72rem;color:#888;line-height:1.7;}
+.custom-strip{background:var(--dark);color:white;padding:50px 2rem;text-align:center;}
+.custom-strip h3{font-family:'Dancing Script',cursive;font-size:3rem;margin-bottom:.5rem;}
+.custom-strip h3 span{color:var(--red);}
+.custom-strip p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;color:#aaa;margin-bottom:1.8rem;}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.6rem;}
+.review-card{background:white;border:1px solid var(--border);padding:1.6rem;position:relative;}
+.review-stars{color:var(--red);font-size:1rem;margin-bottom:.7rem;letter-spacing:2px;}
+.review-text{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;line-height:1.65;color:var(--dark);margin-bottom:1rem;}
+.review-author{display:flex;align-items:center;gap:.7rem;}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:var(--red);color:white;display:flex;align-items:center;justify-content:center;font-family:'Dancing Script',cursive;font-size:1.1rem;flex-shrink:0;}
+.review-name{font-size:0.75rem;font-weight:600;}
+.review-role{font-size:0.65rem;color:#aaa;}
+.review-quote{position:absolute;top:1rem;right:1.2rem;font-size:3rem;color:var(--border);font-family:'Cormorant Garamond',serif;line-height:1;}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.gallery-item{aspect-ratio:1;background:var(--light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;}
+.gallery-item:first-child{grid-column:span 2;aspect-ratio:2/1;}
+.gallery-overlay{position:absolute;inset:0;background:rgba(200,16,46,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+.gallery-overlay span{color:white;font-size:0.68rem;letter-spacing:.15em;text-transform:uppercase;font-weight:600;}
+.gallery-stamp-big{border:4px solid var(--red);padding:18px 30px;text-align:center;background:white;}
+.gallery-stamp-big .gs-text{font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--red);display:block;}
+.gallery-stamp-big .gs-sub{font-size:0.55rem;letter-spacing:.18em;color:var(--red);text-transform:uppercase;margin-top:3px;display:block;}
+.gallery-stamp-sm{border:3px solid;padding:10px 16px;text-align:center;background:white;}
+.gallery-stamp-sm .sm-text{font-size:0.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.gallery-tray{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;padding:10px;}
+.gallery-tray-stamp{width:32px;height:24px;border:2px solid;display:flex;align-items:center;justify-content:center;font-size:0.38rem;font-weight:700;text-transform:uppercase;text-align:center;line-height:1.1;}
+.gallery-roller{background:white;border-radius:8px;border:3px solid #222;padding:12px 20px;box-shadow:3px 3px 0 #222;text-align:center;}
+.gallery-roller-top{background:#1a1a1a;height:10px;border-radius:4px 4px 0 0;margin:-12px -20px 10px;}
+.gallery-roller-text{font-family:'Dancing Script',cursive;font-size:1rem;color:var(--red);line-height:1.3;}
+.delivery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem;margin-bottom:2.5rem;}
+.delivery-card{background:white;border:1px solid var(--border);padding:1.5rem;text-align:center;}
+.delivery-icon{font-size:2rem;margin-bottom:.8rem;}
+.delivery-card h4{font-size:0.82rem;font-weight:600;margin-bottom:.4rem;}
+.delivery-card p{font-size:0.72rem;color:#888;line-height:1.7;}
+.delivery-highlight{color:var(--red);font-weight:600;}
+.delivery-note{background:var(--light);border-left:3px solid var(--red);padding:1rem 1.4rem;font-size:0.78rem;color:var(--mid);line-height:1.7;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;}
+.overlay.open{display:block;}
+.cart-side{position:fixed;right:-420px;top:0;bottom:0;width:400px;background:white;z-index:201;transition:right .35s;display:flex;flex-direction:column;border-left:1px solid var(--border);}
+.cart-side.open{right:0;}
+.ch{padding:1.4rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.ch h3{font-family:'Dancing Script',cursive;font-size:1.8rem;}
+.ch-close{background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--mid);}
+.cart-list{flex:1;overflow-y:auto;padding:.8rem 1.5rem;}
+.cart-empty-msg{text-align:center;padding:3rem 1rem;color:#bbb;font-size:0.78rem;}
+.cart-empty-msg .big{font-size:2.5rem;margin-bottom:1rem;display:block;}
+.ci{display:flex;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.ci-icon{width:52px;height:52px;border:2px solid var(--red);background:var(--light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.62rem;color:var(--red);text-align:center;padding:3px;line-height:1.2;}
+.ci-info{flex:1;}
+.ci-name{font-size:0.78rem;font-weight:600;margin-bottom:2px;}
+.ci-price{font-size:0.72rem;color:var(--red);font-weight:600;}
+.ci-qty{display:flex;align-items:center;gap:7px;margin-top:5px;}
+.qb{width:22px;height:22px;border:1px solid var(--border);background:white;cursor:pointer;font-size:.8rem;display:flex;align-items:center;justify-content:center;}
+.qn{font-size:.8rem;font-weight:600;min-width:18px;text-align:center;}
+.ci-del{background:none;border:none;cursor:pointer;color:#ccc;font-size:.9rem;}
+.cf{padding:1.4rem 1.5rem;border-top:1px solid var(--border);}
+.cf-total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.1rem;}
+.cf-total span{font-size:0.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);}
+.cf-total strong{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;}
+.checkout-btn{width:100%;background:var(--red);color:white;border:none;cursor:pointer;padding:15px;font-family:'Montserrat',sans-serif;font-size:0.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+.modal-wrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;align-items:center;justify-content:center;padding:1rem;}
+.modal-wrap.open{display:flex;}
+.modal{background:white;width:100%;max-width:520px;padding:2.5rem;position:relative;max-height:90vh;overflow-y:auto;}
+.modal h3{font-family:'Dancing Script',cursive;font-size:2rem;margin-bottom:1.4rem;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--mid);}
+.fg{margin-bottom:1.1rem;}
+.fg label{display:block;font-size:0.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--mid);margin-bottom:5px;}
+.fg input,.fg textarea,.fg select{width:100%;border:1.5px solid var(--border);padding:9px 11px;font-family:'Montserrat',sans-serif;font-size:0.8rem;background:white;color:var(--dark);outline:none;}
+.fg textarea{min-height:75px;resize:vertical;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.submit-btn{width:100%;background:var(--red);color:white;border:none;cursor:pointer;padding:14px;font-family:'Montserrat',sans-serif;font-size:0.76rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-top:.4rem;}
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(60px);background:var(--dark);color:white;padding:10px 22px;font-size:0.72rem;z-index:400;opacity:0;transition:all .3s;white-space:nowrap;border-left:3px solid var(--red);}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+footer{background:var(--dark);color:white;padding:3rem 2rem;text-align:center;}
+.footer-logo{font-family:'Dancing Script',cursive;font-size:2.2rem;margin-bottom:.3rem;}
+.footer-logo span{color:var(--red);}
+.footer-sub{font-size:0.68rem;color:#666;letter-spacing:.1em;margin-bottom:1.2rem;}
+.footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;}
+.footer-links a{color:#888;text-decoration:none;font-size:0.65rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;}
+.footer-links a:hover{color:var(--red);}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;gap:2rem;padding:40px 1.2rem;}
+  .hero-text h1{font-size:3rem;}
+  .hero-visual{order:-1;}
+  .stamp-cluster{width:260px;height:260px;}
+  .how-grid{grid-template-columns:1fr;}
+  .cart-side{width:100%;right:-100%;}
+  .nav-links{display:none;}
+  .frow{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Stamped<span>.</span> <span style="color:#C8102E">♥</span></a>
+  <div class="nav-links">
+    <a href="#shop">Shop</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#delivery">Delivery</a>
+    <a href="#" onclick="event.preventDefault();openModal();">Custom Order</a>
+  </div>
+  <button class="cart-btn" onclick="openCart();">🛒 Cart <span class="cart-badge" id="cartCount">0</span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Mark with your <em>Heart.</em></h1>
+    <p class="hero-tagline">Premium self-inking stamps crafted for teachers who believe great feedback deserves great style.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="num">300+</span><span class="lbl">Stamps Sold</span></div>
+      <div class="stat"><span class="num">R199</span><span class="lbl">Starting From</span></div>
+      <div class="stat"><span class="num">2025</span><span class="lbl">Est.</span></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#shop" class="btn-red">Shop Now</a>
+      <button class="btn-outline" onclick="openModal();">Custom Order</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="stamp-cluster">
+      <div class="mini-float mf1">100%</div>
+      <div class="mini-float mf2">Excellent! ⭐</div>
+      <div class="mini-float mf3">Very Good!</div>
+      <div class="mini-float mf4">Great Work!</div>
+      <div class="big-stamp">
+        <div class="big-stamp-inner">
+          <span class="bst">Well Done!</span>
+          <span class="bss">✦ Stamped. EST. 2025 ✦</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Excellent Work ✦</span><span class="dot">·</span><span>Work Not Done ✦</span><span class="dot">·</span><span>100% ✦</span><span class="dot">·</span><span>Parent Signature ✦</span><span class="dot">·</span><span>Please Correct &amp; Return ✦</span><span class="dot">·</span><span>Let's Work Together ✦</span><span class="dot">·</span><span>Great Effort ✦</span><span class="dot">·</span>
+    <span>Excellent Work ✦</span><span class="dot">·</span><span>Work Not Done ✦</span><span class="dot">·</span><span>100% ✦</span><span class="dot">·</span><span>Parent Signature ✦</span><span class="dot">·</span><span>Please Correct &amp; Return ✦</span><span class="dot">·</span><span>Let's Work Together ✦</span><span class="dot">·</span><span>Great Effort ✦</span><span class="dot">·</span>
+  </div>
+</div>
+
+<section class="section" id="shop">
+  <div class="sec-head"><h2>Shop Stamps</h2><p>All stamps are self-inking &amp; ready to use</p></div>
+  <div class="tabs">
+    <button class="tab active" onclick="filterCat('all',this);">All Stamps</button>
+    <button class="tab" onclick="filterCat('roller',this);">Personalised Roller</button>
+    <button class="tab" onclick="filterCat('mini',this);">Mini Stamps</button>
+    <button class="tab" onclick="filterCat('set',this);">Stamp Sets</button>
+  </div>
+  <div class="grid" id="productsGrid"></div>
+</section>
+
+<section class="section" id="how">
+  <div class="sec-head"><h2>How It Works</h2><p>Simple as stamp, mark, done.</p></div>
+  <div class="how-grid">
+    <div class="how-card"><div class="how-num">1</div><h4>Choose Your Stamp</h4><p>Pick from our ready-made designs or request a fully custom stamp with your name, message, and date line.</p></div>
+    <div class="how-card"><div class="how-num">2</div><h4>Place Your Order</h4><p>Add to cart and fill in your details. We confirm via WhatsApp and get your stamp made with care.</p></div>
+    <div class="how-card"><div class="how-num">3</div><h4>Stamp with Style</h4><p>Your self-inking stamp arrives ready to use — crisp, beautiful, and built for the classroom.</p></div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="sec-head"><h2>Stamp Gallery</h2><p>A peek at what your marks could look like</p></div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><div class="gallery-stamp-big"><span class="gs-text">Well Done!</span><span class="gs-sub">✦ Stamped. EST. 2025 ✦</span></div><div class="gallery-overlay"><span>Roller Stamp</span></div></div>
+    <div class="gallery-item"><div class="gallery-stamp-sm" style="border-color:#2563eb"><span class="sm-text" style="color:#2563eb">100%</span></div><div class="gallery-overlay"><span>Mini Stamp</span></div></div>
+    <div class="gallery-item"><div class="gallery-roller"><div class="gallery-roller-top"></div><div class="gallery-roller-text">Checked by Ms T Mareka<br><span style="font-size:.75rem">Date: .............</span></div></div><div class="gallery-overlay"><span>Personalised Roller</span></div></div>
+    <div class="gallery-item"><div class="gallery-stamp-sm" style="border-color:#dc2626"><span class="sm-text" style="color:#dc2626">Excellent! ⭐</span></div><div class="gallery-overlay"><span>Mini Stamp</span></div></div>
+    <div class="gallery-item"><div class="gallery-tray"><div class="gallery-tray-stamp" style="color:#2563eb;border-color:#2563eb">100%</div><div class="gallery-tray-stamp" style="color:#dc2626;border-color:#dc2626">Excel-lent</div><div class="gallery-tray-stamp" style="color:#16a34a;border-color:#16a34a">Very Good</div><div class="gallery-tray-stamp" style="color:#7c3aed;border-color:#7c3aed">Great Work</div><div class="gallery-tray-stamp" style="color:#b91c1c;border-color:#b91c1c">Parent Sig</div><div class="gallery-tray-stamp" style="color:#b45309;border-color:#b45309">Correct</div><div class="gallery-tray-stamp" style="color:#4338ca;border-color:#4338ca">Together</div><div class="gallery-tray-stamp" style="color:#ea580c;border-color:#ea580c">Effort!</div></div><div class="gallery-overlay"><span>Full Set of 8</span></div></div>
+    <div class="gallery-item"><div class="gallery-stamp-sm" style="border-color:#b91c1c"><span class="sm-text" style="color:#b91c1c;font-size:.62rem">🖊 Parent<br>Signature</span></div><div class="gallery-overlay"><span>Mini Stamp</span></div></div>
+  </div>
+</section>
+
+<section class="section" id="reviews">
+  <div class="sec-head"><h2>Teacher Love</h2><p>From real teachers who mark with Stamped.</p></div>
+  <div class="reviews-grid">
+    <div class="review-card"><span class="review-quote">"</span><div class="review-stars">★★★★★</div><p class="review-text">These stamps have completely transformed my marking. My learners respond better to the stamp than red pen scribbles!</p><div class="review-author"><div class="review-avatar">N</div><div><div class="review-name">Mrs. N. Dlamini</div><div class="review-role">Grade 4 Teacher · Johannesburg</div></div></div></div>
+    <div class="review-card"><span class="review-quote">"</span><div class="review-stars">★★★★★</div><p class="review-text">Ordered the personalised roller stamp and it's the best purchase I've made this school year. Looks so professional!</p><div class="review-author"><div class="review-avatar">T</div><div><div class="review-name">Mr. T. Mokoena</div><div class="review-role">Grade 7 English · Soweto</div></div></div></div>
+    <div class="review-card"><span class="review-quote">"</span><div class="review-stars">★★★★★</div><p class="review-text">Bought the full set of 8 for our department and we all love them. Quality is amazing. Will definitely reorder!</p><div class="review-author"><div class="review-avatar">L</div><div><div class="review-name">Ms. L. van Wyk</div><div class="review-role">HOD Mathematics · Pretoria</div></div></div></div>
+    <div class="review-card"><span class="review-quote">"</span><div class="review-stars">★★★★★</div><p class="review-text">The "Let's work together on this one" stamp is my favourite. So much kinder — my learners feel encouraged.</p><div class="review-author"><div class="review-avatar">A</div><div><div class="review-name">Ms. A. Sithole</div><div class="review-role">Foundation Phase · Durban</div></div></div></div>
+    <div class="review-card"><span class="review-quote">"</span><div class="review-stars">★★★★★</div><p class="review-text">Ordered as a gift for a colleague and she absolutely loved it. Stamped. is the gift every teacher deserves!</p><div class="review-author"><div class="review-avatar">P</div><div><div class="review-name">Mrs. P. Khumalo</div><div class="review-role">Grade 5 Teacher · Cape Town</div></div></div></div>
+    <div class="review-card"><span class="review-quote">"</span><div class="review-stars">★★★★★</div><p class="review-text">So easy to order via WhatsApp. My custom stamp came out exactly as I described. Highly recommend Stamped.!</p><div class="review-author"><div class="review-avatar">S</div><div><div class="review-name">Mr. S. Nkosi</div><div class="review-role">Grade 11 History · Midrand</div></div></div></div>
+  </div>
+</section>
+
+<section class="section" id="delivery">
+  <div class="sec-head"><h2>Delivery Info</h2><p>We get your stamps to you safely &amp; quickly</p></div>
+  <div class="delivery-grid">
+    <div class="delivery-card"><div class="delivery-icon">📦</div><h4>Standard Delivery</h4><p>Nationwide delivery via courier. <span class="delivery-highlight">3–5 business days</span> after order confirmation.</p></div>
+    <div class="delivery-card"><div class="delivery-icon">⚡</div><h4>Production Time</h4><p>Custom &amp; personalised stamps take <span class="delivery-highlight">10 business days</span> to produce before shipping.</p></div>
+    <div class="delivery-card"><div class="delivery-icon">📍</div><h4>Collection Available</h4><p>Based in Gauteng? <span class="delivery-highlight">Local collection</span> is available — chat to us on WhatsApp to arrange.</p></div>
+    <div class="delivery-card"><div class="delivery-icon">💬</div><h4>Order via WhatsApp</h4><p>All orders confirmed &amp; tracked via WhatsApp. We'll keep you updated every step of the way.</p></div>
+  </div>
+  <div class="delivery-note"><strong>📌 Please note:</strong> Delivery fees apply and vary by location. We'll confirm the cost when we process your order. For <strong>2 or more stamps</strong>, ask us about bundled delivery savings!</div>
+</section>
+
+<div class="custom-strip">
+  <h3>Want it <span>personalised?</span></h3>
+  <p>Add your name, school, subject — we'll create a stamp that's uniquely yours.</p>
+  <button class="btn-red" onclick="openModal();">Request Custom Stamp</button>
+</div>
+
+<footer>
+  <div class="footer-logo">Stamped<span>.</span> ♥</div>
+  <p class="footer-sub">EST. 2025 · Teacher Stamps with Style</p>
+  <div class="footer-links">
+    <a href="#shop">Shop</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#delivery">Delivery</a>
+    <a href="#" onclick="event.preventDefault();openModal();">Custom Order</a>
+    <a href="https://wa.me/27672587493" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+  </div>
+  <p style="font-size:.62rem;color:#444;margin-top:1.5rem;">© 2025 Stamped. · Made with ♥ for teachers</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart();"></div>
+<div class="cart-side" id="cartSide">
+  <div class="ch"><h3>Your Cart ♥</h3><button class="ch-close" onclick="closeCart();">✕</button></div>
+  <div class="cart-list" id="cartList"><div class="cart-empty-msg"><span class="big">🛒</span>Your cart is empty.<br>Add a stamp to get started!</div></div>
+  <div class="cf">
+    <div class="cf-total"><span>Total</span><strong id="cartTotal">R0</strong></div>
+    <button class="checkout-btn" onclick="checkout();">Order via WhatsApp →</button>
+  </div>
+</div>
+
+<div class="modal-wrap" id="orderModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal();">✕</button>
+    <h3>Custom Order ♥</h3>
+    <div class="fg"><label>Your Name</label><input type="text" id="oName" placeholder="e.g. Ms Mareka"></div>
+    <div class="fg"><label>WhatsApp / Phone Number</label><input type="tel" id="oPhone" placeholder="+27 __ ___ ____"></div>
+    <div class="fg"><label>Email (optional)</label><input type="email" id="oEmail" placeholder="you@email.com"></div>
+    <div class="frow">
+      <div class="fg"><label>Stamp Type</label>
+        <select id="oType">
+          <option value="">-- Select --</option>
+          <option>Personalised Roller Stamp (R249)</option>
+          <option>Mini Stamp — Single (R199)</option>
+          <option>Mini Stamp Set of 5 (R249)</option>
+          <option>Mini Stamp Set of 8 (R249)</option>
+          <option>Custom Design — Let's discuss</option>
+        </select>
+      </div>
+      <div class="fg"><label>Ink Colour</label>
+        <select id="oColor">
+          <option>Red</option><option>Blue</option><option>Black</option><option>Green</option><option>Purple</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg"><label>Stamp Text / Message</label><textarea id="oMessage" placeholder="e.g. Checked by Mrs. Dlamini / Date: ......."></textarea></div>
+    <div class="fg"><label>Special Requests (optional)</label><textarea id="oNotes" placeholder="e.g. Add a heart, include school name..." style="min-height:55px"></textarea></div>
+    <button class="submit-btn" onclick="submitOrder();">Send via WhatsApp →</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var WA = '27672587493';
+
+var PRODUCTS = [
+  {id:1,cat:'roller',name:'Personalised Roller Stamp',desc:'Self-inking roller with your name + Date line. Available in black or green barrel.',price:249,tag:'pop',render:'<div class="roller-stamp"><div class="roller-top"></div><div class="roller-text">Checked by Ms T Mareka<br><span style="font-size:.8rem">Date: .............</span></div></div>'},
+  {id:2,cat:'roller',name:'Work Not Done Roller Stamp',desc:'Hold students accountable with style. Self-inking roller with Date fill-in line.',price:249,tag:'new',render:'<div class="roller-stamp"><div class="roller-top"></div><div class="roller-text">Work not done.<br><span style="font-size:.8rem">Date: .............</span></div></div>'},
+  {id:3,cat:'mini',name:'100% Mini Stamp',desc:'Bold blue self-inking stamp. Perfect for perfect scores.',price:199,tag:'pop',render:'<div class="mini-stamp-preview" style="color:#2563eb;border-color:#2563eb;font-size:1.2rem">100%</div>'},
+  {id:4,cat:'mini',name:'Excellent! Mini Stamp',desc:'Celebrate excellence with a vibrant red stamp and star motif.',price:199,tag:'',render:'<div class="mini-stamp-preview" style="color:#dc2626;border-color:#dc2626">Excellent! ⭐</div>'},
+  {id:5,cat:'mini',name:'Very Good! Mini Stamp',desc:'Green self-inking mini stamp for solid work.',price:199,tag:'',render:'<div class="mini-stamp-preview" style="color:#16a34a;border-color:#16a34a">Very Good!</div>'},
+  {id:6,cat:'mini',name:'Great Work! Mini Stamp',desc:'Purple stamp to celebrate effort and achievement.',price:199,tag:'',render:'<div class="mini-stamp-preview" style="color:#7c3aed;border-color:#7c3aed">Great Work!</div>'},
+  {id:7,cat:'mini',name:'Parent Signature Mini Stamp',desc:'Red stamp — makes parent communication quick and professional.',price:199,tag:'',render:'<div class="mini-stamp-preview" style="color:#b91c1c;border-color:#b91c1c;font-size:.66rem">Parent Signature</div>'},
+  {id:8,cat:'mini',name:'Please Correct and Return Stamp',desc:'Clear, firm, and professional for corrections.',price:199,tag:'',render:'<div class="mini-stamp-preview" style="color:#b45309;border-color:#b45309;font-size:.6rem">Please correct and return</div>'},
+  {id:9,cat:'mini',name:'Lets Work Together Stamp',desc:'Encouraging blue stamp for students who need extra support.',price:199,tag:'',render:'<div class="mini-stamp-preview" style="color:#4338ca;border-color:#4338ca;font-size:.56rem">Lets work together!</div>'},
+  {id:10,cat:'mini',name:'Great Effort! Mini Stamp',desc:'Orange stamp to recognise effort.',price:199,tag:'',render:'<div class="mini-stamp-preview" style="color:#ea580c;border-color:#ea580c">Great Effort!</div>'},
+  {id:12,cat:'set',name:'Full Marking Set — All 8 Mini Stamps',desc:'Every essential marking stamp in one set. Everything a busy teacher needs.',price:380,tag:'new',render:'<div class="set-preview"><div class="set-mini" style="color:#2563eb;border-color:#2563eb">100%</div><div class="set-mini" style="color:#dc2626;border-color:#dc2626">Excellent</div><div class="set-mini" style="color:#16a34a;border-color:#16a34a">Very Good</div><div class="set-mini" style="color:#7c3aed;border-color:#7c3aed">Great Work</div><div class="set-mini" style="color:#b91c1c;border-color:#b91c1c">Parent Sig</div><div class="set-mini" style="color:#b45309;border-color:#b45309">Correct</div><div class="set-mini" style="color:#4338ca;border-color:#4338ca">Together</div><div class="set-mini" style="color:#ea580c;border-color:#ea580c">Effort</div></div>'},
+];
+
+var cart = [];
+
+function openModal() {
+  document.getElementById('orderModal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('orderModal').classList.remove('open');
+}
+function openCart() {
+  document.getElementById('cartSide').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function closeCart() {
+  document.getElementById('cartSide').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2800);
+}
+
+function renderProducts(cat) {
+  var grid = document.getElementById('productsGrid');
+  var list = cat === 'all' ? PRODUCTS : PRODUCTS.filter(function(p){ return p.cat === cat; });
+  var html = '';
+  for (var i = 0; i < list.length; i++) {
+    var p = list[i];
+    var tagHtml = p.tag === 'new' ? '<span class="tag tag-new">New</span>' : p.tag === 'pop' ? '<span class="tag tag-pop">Popular</span>' : '';
+    html += '<div class="card">' +
+      '<div class="card-preview">' + tagHtml + p.render + '</div>' +
+      '<div class="card-body">' +
+      '<div class="card-name">' + p.name + '</div>' +
+      '<div class="card-desc">' + p.desc + '</div>' +
+      '<div class="card-foot">' +
+      '<span class="price">R' + p.price + ' <span class="price-note">each</span></span>' +
+      '<button class="add-btn" onclick="addToCart(' + p.id + ');">Add to Cart</button>' +
+      '</div></div></div>';
+  }
+  grid.innerHTML = html;
+}
+
+function filterCat(cat, btn) {
+  var tabs = document.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) { tabs[i].classList.remove('active'); }
+  btn.classList.add('active');
+  renderProducts(cat);
+}
+
+function addToCart(id) {
+  var p = null;
+  for (var i = 0; i < PRODUCTS.length; i++) { if (PRODUCTS[i].id === id) { p = PRODUCTS[i]; break; } }
+  if (!p) return;
+  var ex = null;
+  for (var i = 0; i < cart.length; i++) { if (cart[i].id === id) { ex = cart[i]; break; } }
+  if (ex) { ex.qty++; } else { cart.push({id:p.id, name:p.name, price:p.price, qty:1}); }
+  updateCartUI();
+  showToast('Added to cart!');
+}
+
+function updateCartUI() {
+  var total = 0; var count = 0;
+  for (var i = 0; i < cart.length; i++) { total += cart[i].price * cart[i].qty; count += cart[i].qty; }
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotal').textContent = 'R' + total;
+  var list = document.getElementById('cartList');
+  if (!cart.length) {
+    list.innerHTML = '<div class="cart-empty-msg"><span class="big">🛒</span>Your cart is empty.<br>Add a stamp to get started!</div>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < cart.length; i++) {
+    var item = cart[i];
+    html += '<div class="ci">' +
+      '<div class="ci-icon">' + item.name.substring(0,12) + '</div>' +
+      '<div class="ci-info">' +
+      '<div class="ci-name">' + item.name + '</div>' +
+      '<div class="ci-price">R' + item.price + ' each</div>' +
+      '<div class="ci-qty">' +
+      '<button class="qb" onclick="chQty(' + item.id + ',-1);">-</button>' +
+      '<span class="qn">' + item.qty + '</span>' +
+      '<button class="qb" onclick="chQty(' + item.id + ',1);">+</button>' +
+      '</div></div>' +
+      '<button class="ci-del" onclick="rmItem(' + item.id + ');">x</button>' +
+      '</div>';
+  }
+  list.innerHTML = html;
+}
+
+function chQty(id, d) {
+  for (var i = 0; i < cart.length; i++) {
+    if (cart[i].id === id) { cart[i].qty += d; if (cart[i].qty <= 0) { cart.splice(i,1); } break; }
+  }
+  updateCartUI();
+}
+function rmItem(id) {
+  for (var i = 0; i < cart.length; i++) { if (cart[i].id === id) { cart.splice(i,1); break; } }
+  updateCartUI();
+}
+
+function checkout() {
+  if (!cart.length) { showToast('Your cart is empty!'); return; }
+  var lines = '';
+  var total = 0;
+  for (var i = 0; i < cart.length; i++) {
+    lines += '- ' + cart[i].name + ' x' + cart[i].qty + ' = R' + (cart[i].price * cart[i].qty) + '\n';
+    total += cart[i].price * cart[i].qty;
+  }
+  var msg = 'Hi Stamped! I would like to order:\n\n' + lines + '\nTotal: R' + total + '\n\nPlease confirm. Thank you!';
+  window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank');
+}
+
+function submitOrder() {
+  var name = document.getElementById('oName').value.trim();
+  var phone = document.getElementById('oPhone').value.trim();
+  if (!name || !phone) { showToast('Please enter your name and phone number'); return; }
+  var type = document.getElementById('oType').value;
+  var color = document.getElementById('oColor').value;
+  var message = document.getElementById('oMessage').value.trim();
+  var notes = document.getElementById('oNotes').value.trim();
+  var text = 'Hi Stamped!\n\nCustom Order:\nName: ' + name + '\nPhone: ' + phone + '\nType: ' + (type||'To discuss') + '\nInk: ' + color + '\nText: ' + (message||'To discuss') + (notes ? '\nNotes: ' + notes : '') + '\n\nThank you!';
+  window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank');
+  closeModal();
+  showToast('Opening WhatsApp with your order!');
+}
+
+renderProducts('all');
+</script>
+</body>
+</html>

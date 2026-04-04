@@ -1,0 +1,21 @@
+{
+  "name": "Stamped & Certified",
+  "short_name": "Stamped.",
+  "description": "Premium self-inking stamps for teachers who mark with their heart",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fdf9f6",
+  "theme_color": "#C8102E",
+  "icons": [
+    {
+      "src": "https://img.icons8.com/color/192/stamp.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://img.icons8.com/color/512/stamp.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
